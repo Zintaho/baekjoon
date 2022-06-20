@@ -1,0 +1,12 @@
+let date = new Date();
+let year = date.getFullYear();
+let newYear = '';
+if (year < 1000) newYear += '0';
+if (year < 100) newYear += '0';
+if (year < 10) newYear += '0';
+newYear += year;
+let month = date.getMonth() + 1;
+month = month < 10? '0' + month : month;
+let day = date.getDate();
+day = day < 10? '0' + day : day;
+console.log(`${newYear}-${month}-${day}`);
