@@ -16,13 +16,31 @@
 	// 	"description": "Log output to console"
 	// }
 
-	"nodeJS starter" : {
+	"nodeJS starter (fs)" : {
 		"scope" : "javascript",
 		"prefix" : "njbj",
 		"body" : [
 			"let fs = require('fs');",
 			"let input = fs.readFileSync('/dev/stdin').toString().trim().split(' ');"
 		],
-		"description": "nodeJS starter code snippet for baekjoon"
+		"description": "nodeJS starter code snippet for baekjoon (fs)"
+	},
+	"nodeJS starter (readline)" : {
+		"scope" : "javascript",
+		"prefix" : "njbj2",
+		"body" : [
+			"let readline = require('readline');",
+			"let rl = readline.createInterface({",
+			"    input: process.stdin,",
+			"    output: process.stdout",
+			"});",
+			"let input = [];",
+			"let output = ;",
+			"rl.on('line', (line) => input.push(line))",
+			"  .on('close', () => {",
+			"    process.exit();",
+			"});"
+		],
+		"description": "nodeJS starter code snippet for baekjoon (readline)"
 	}
 }
