@@ -21,7 +21,7 @@
 		"prefix" : "njbj",
 		"body" : [
 			"let fs = require('fs');",
-			"let input = fs.readFileSync('/dev/stdin').toString().split(' ');"
+			"let input = fs.readFileSync('/dev/stdin').toString().trim().split(' ');"
 		],
 		"description": "nodeJS starter code snippet for baekjoon"
 	}
