@@ -42,5 +42,18 @@
 			"});"
 		],
 		"description": "nodeJS starter code snippet for baekjoon (readline)"
-	}
+	},
+	"nodeJS starter (process)" : {
+		"scope" : "javascript",
+		"prefix" : "njbj3",
+		"body" : [
+			"process.stdin.on('data', (input) => {",
+			"    input = input.trim().split(' ');",
+			"",
+			"    process.stdout.write('');",
+			"    process.exit();",
+			"});"
+		],
+		"description": "nodeJS starter code snippet for baekjoon (process)"
+	},
 }
