@@ -48,7 +48,7 @@
 		"prefix" : "njbj3",
 		"body" : [
 			"process.stdin.on('data', (input) => {",
-			"    input = input.trim().split(' ');",
+			"    input = input.toString().trim().split(' ');",
 			"",
 			"    process.stdout.write('');",
 			"    process.exit();",
