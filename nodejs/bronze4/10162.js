@@ -1,0 +1,11 @@
+let fs = require('fs');
+let input = fs.readFileSync('/dev/stdin').toString().trim();
+let N = parseInt(input, 10);
+let A = Math.floor(N/300);
+N -= A * 300;
+let B = Math.floor(N/60);
+N -= B * 60;
+let C = Math.floor(N/10);
+N -= C * 10;
+if (N != 0) console.log(-1);
+else console.log(`${A} ${B} ${C}`);
