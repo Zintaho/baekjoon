@@ -1,4 +1,6 @@
 let N = parseInt(require('fs').readFileSync('/dev/stdin').toString().trim());
+let output = '';
 for (let i = 0; i< N; ++i) {
-    console.log("SciComLove\n");
+    output += "SciComLove\n";
 }
+console.log(output);
