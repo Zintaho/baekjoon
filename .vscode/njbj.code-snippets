@@ -54,4 +54,29 @@
 		],
 		"description": "nodeJS starter code snippet for baekjoon (process)"
 	},
+	"nodeJS nth_permutation without recursion" : {
+		"scope" : "javascript",
+		"prefix" : "njnp",
+		"body" : [
+			"const nth_perm = function(array, n) {",
+			"    let arr = [...array];",
+			"    let len = arr.length;",
+			"    let f = 1;",
+			"    for (let i = 2; i<=len; ++i) f*=i;",
+			"",
+			"    let temp = [];",
+			"    if (n >= 0 && n < f) {",
+			"        for (;len > 0; len--) {",
+			"            f /= len;",
+			"            let i = Math.floor(n/f);",
+			"            n %= f;",
+			"            temp.push(arr[i]);",
+			"            arr.splice(i,1);",
+			"        }",
+			"    }",
+			"    return temp;",
+			"}"
+		],
+		"description": "get n-th permutaion without recursion"
+	}
 }
