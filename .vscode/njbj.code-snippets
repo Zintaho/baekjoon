@@ -1,82 +1,128 @@
 {
-	// Place your baekjoon 작업 영역 snippets here. Each snippet is defined under a snippet name and has a scope, prefix, body and 
-	// description. Add comma separated ids of the languages where the snippet is applicable in the scope field. If scope 
-	// is left empty or omitted, the snippet gets applied to all languages. The prefix is what is 
-	// used to trigger the snippet and the body will be expanded and inserted. Possible variables are: 
-	// $1, $2 for tab stops, $0 for the final cursor position, and ${1:label}, ${2:another} for placeholders. 
-	// Placeholders with the same ids are connected.
-	// Example:
-	// "Print to console": {
-	// 	"scope": "javascript,typescript",
-	// 	"prefix": "log",
-	// 	"body": [
-	// 		"console.log('$1');",
-	// 		"$2"
-	// 	],
-	// 	"description": "Log output to console"
-	// }
+    // Place your baekjoon 작업 영역 snippets here. Each snippet is defined under a snippet name and has a scope, prefix, body and 
+    // description. Add comma separated ids of the languages where the snippet is applicable in the scope field. If scope 
+    // is left empty or omitted, the snippet gets applied to all languages. The prefix is what is 
+    // used to trigger the snippet and the body will be expanded and inserted. Possible variables are: 
+    // $1, $2 for tab stops, $0 for the final cursor position, and ${1:label}, ${2:another} for placeholders. 
+    // Placeholders with the same ids are connected.
+    // Example:
+    // "Print to console": {
+    //     "scope": "javascript,typescript",
+    //     "prefix": "log",
+    //     "body": [
+    //         "console.log('$1');",
+    //         "$2"
+    //     ],
+    //     "description": "Log output to console"
+    // }
 
-	"nodeJS starter (fs)" : {
+    "nodeJS starter (fs)" : {
+        "scope" : "javascript",
+        "prefix" : "njbj",
+        "body" : [
+            "let input = require('fs').readFileSync('/dev/stdin').toString().trim().split('\\n');"
+        ],
+        "description": "nodeJS starter code snippet for baekjoon (fs)"
+    },
+    "nodeJS starter (readline)" : {
+        "scope" : "javascript",
+        "prefix" : "njbj2",
+        "body" : [
+            "let rl = require('readline').createInterface({",
+            "    input: process.stdin,",
+            "    output: process.stdout",
+            "});",
+            "let input = [];",
+            "let output = ;",
+            "rl.on('line', (line) => input.push(line))",
+            "  .on('close', () => {",
+            "    process.exit();",
+            "});"
+        ],
+        "description": "nodeJS starter code snippet for baekjoon (readline)"
+    },
+    "nodeJS starter (process)" : {
+        "scope" : "javascript",
+        "prefix" : "njbj3",
+        "body" : [
+            "process.stdin.on('data', (input) => {",
+            "    input = input.toString().trim().split(' ');",
+            "",
+            "    process.stdout.write('');",
+            "    process.exit();",
+            "});"
+        ],
+        "description": "nodeJS starter code snippet for baekjoon (process)"
+    },
+    "nodeJS nth_permutation without recursion" : {
+        "scope" : "javascript",
+        "prefix" : "njnp",
+        "body" : [
+            "const nth_perm = function(array, n) {",
+            "    let arr = [...array];",
+            "    let len = arr.length;",
+            "    let f = 1;",
+            "    for (let i = 2; i<=len; ++i) f*=i;",
+            "",
+            "    let temp = [];",
+            "    if (n >= 0 && n < f) {",
+            "        for (;len > 0; len--) {",
+            "            f /= len;",
+            "            let i = Math.floor(n/f);",
+            "            n %= f;",
+            "            temp.push(arr[i]);",
+            "            arr.splice(i,1);",
+            "        }",
+            "    }",
+            "    return temp;",
+            "}"
+        ],
+        "description": "get n-th permutaion without recursion"
+    },
+    "permutaion" : {
+        "scope" : "javascript",
+        "prefix" : "permutation",
+        "body": [
+            "function all_permutation(n, r, checked=new Array(n).fill(false), row=[]) {",
+            "    if (r === row.length) {",
+            "        output.push(row.join(' '));",
+            "        return;",
+            "    }",
+            "    for (let i = 0; i < n; ++i) {",
+            "        let checkedCopied = [...checked];",
+            "        let copied = [...row, i+1];",
+            "",
+            "        if ( checkedCopied[i] === false) {",
+            "            checkedCopied[i] = true;",
+            "            all_permutation(n, r, checkedCopied, copied);",
+            "        }",
+            "    }",
+            "}"
+        ],
+        "description": "get all permutation"
+    },
+    "combination" : {
 		"scope" : "javascript",
-		"prefix" : "njbj",
-		"body" : [
-			"let input = require('fs').readFileSync('/dev/stdin').toString().trim().split('\\n');"
-		],
-		"description": "nodeJS starter code snippet for baekjoon (fs)"
-	},
-	"nodeJS starter (readline)" : {
-		"scope" : "javascript",
-		"prefix" : "njbj2",
-		"body" : [
-			"let rl = require('readline').createInterface({",
-			"    input: process.stdin,",
-			"    output: process.stdout",
-			"});",
-			"let input = [];",
-			"let output = ;",
-			"rl.on('line', (line) => input.push(line))",
-			"  .on('close', () => {",
-			"    process.exit();",
-			"});"
-		],
-		"description": "nodeJS starter code snippet for baekjoon (readline)"
-	},
-	"nodeJS starter (process)" : {
-		"scope" : "javascript",
-		"prefix" : "njbj3",
-		"body" : [
-			"process.stdin.on('data', (input) => {",
-			"    input = input.toString().trim().split(' ');",
-			"",
-			"    process.stdout.write('');",
-			"    process.exit();",
-			"});"
-		],
-		"description": "nodeJS starter code snippet for baekjoon (process)"
-	},
-	"nodeJS nth_permutation without recursion" : {
-		"scope" : "javascript",
-		"prefix" : "njnp",
-		"body" : [
-			"const nth_perm = function(array, n) {",
-			"    let arr = [...array];",
-			"    let len = arr.length;",
-			"    let f = 1;",
-			"    for (let i = 2; i<=len; ++i) f*=i;",
-			"",
-			"    let temp = [];",
-			"    if (n >= 0 && n < f) {",
-			"        for (;len > 0; len--) {",
-			"            f /= len;",
-			"            let i = Math.floor(n/f);",
-			"            n %= f;",
-			"            temp.push(arr[i]);",
-			"            arr.splice(i,1);",
-			"        }",
-			"    }",
-			"    return temp;",
-			"}"
-		],
-		"description": "get n-th permutaion without recursion"
-	}
+        "prefix" : "combination",
+        "body" : [
+            "function all_combination(n, r, checked=new Array(n).fill(false), row=[]) {",
+            "    const len = row.length;",
+            "    if (len > 1 && row[len - 2] > row[len - 1] ) return;",
+            "    if (r === len) {",
+            "        output.push(row.join(' '));",
+            "        return;",
+            "    }",
+            "    for (let i = 0; i < n; ++i) {",
+            "        let checkedCopied = [...checked];",
+            "        let copied = [...row, i+1];",
+            "",
+            "        if ( checkedCopied[i] === false) {",
+            "            checkedCopied[i] = true;",
+            "            all_combination(n, r, checkedCopied, copied);",
+            "        }",
+            "    }",
+            "}"
+        ],
+        "description": "get all combination"
+    }
 }
