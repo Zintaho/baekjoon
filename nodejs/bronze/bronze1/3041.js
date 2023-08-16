@@ -1,3 +1,4 @@
+// N 퍼즐
 let input = require('fs').readFileSync('/dev/stdin').toString().trim().split('\n');
 
 let answer = {

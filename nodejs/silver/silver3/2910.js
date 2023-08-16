@@ -1,3 +1,4 @@
+// 빈도 정렬
 let [NC, seq] = require('fs').readFileSync('/dev/stdin').toString().trim().split('\n');
 let [N, C] = NC.split(' ').map(x=>+x);
 seq = seq.split(' ').map(x=>+x);
