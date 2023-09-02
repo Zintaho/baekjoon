@@ -1,20 +1,25 @@
 let [N, ...input] = require('fs').readFileSync('/dev/stdin').toString().trim().split('\n').map(x=>+x);
 
-let gcd = new Array(N-2);
-for (let i = 0; i < N-2; ++i) {
-    let [i0, i1, i2] = [input[i], input[i+1], input[i+2]];
-    let [a, b] = [i1-i0, i2-i1];
-    gcd[i] = euclidean(a,b);
+for (let i = N-1; i >= 0; --i) input[i] -= input[0];
+let D = input[N-1];
+for (let i = 1; i < N-1; ++i) {
+    D = Math.min(D, input[i] - input[i-1]);
 }
-gcd = Math.min(...gcd);
-console.log((input[N-1] - input[0] ) / gcd - N + 1);
+input = input.slice(1);
 
-
-function euclidean(a, b) {
-    [a, b] = [Math.max(a,b), Math.min(a,b)];
-    while (true) {
-        let r = a%b;
-        if (r === 0) return b;
-        [a,b] = [b,r];
+let answer;
+for (let d = D; d >= 1; --d) {
+    if (Math.floor(D/d) * d !== D) continue;
+    let check = true;
+    for (let a of input) {
+        if (a%d !== 0) {
+            check = false;
+            break;
+        }
+    }
+    if (check) {
+        answer = input[N-2]/d - input.length;
+        break;
     }
 }
+console.log(answer);
