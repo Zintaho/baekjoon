@@ -10,8 +10,7 @@ for (let t = 0; t < +T; ++t) {
         let [cx, cy, r] = input[i].split(' ').map(Number);
         let check1 = Math.pow((cx-x1), 2) + Math.pow((cy-y1), 2) <= r*r;
         let check2 = Math.pow((cx-x2), 2) + Math.pow((cy-y2), 2) <= r*r;
-        if (check1 || check2) count++;
-        if (check1 && check2) count--;
+        if (check1 ^ check2) count++;
     }
     output[t] = count;
 }
