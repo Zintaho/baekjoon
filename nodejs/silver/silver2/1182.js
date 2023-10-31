@@ -1,7 +1,6 @@
 let [NS, input] = require('fs').readFileSync('/dev/stdin').toString().trim().split('\n');
 let [N, S] = NS.split(' ').map(Number);
 input = input.split(' ').map(Number);
-input.sort((a,b) => a-b);
 
 let output = 0;
 dfs();
