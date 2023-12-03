@@ -32,9 +32,9 @@
             "    input: process.stdin,",
             "    output: process.stdout",
             "});",
-            "let input = [];",
-            "let output = ;",
-            "rl.on('line', (line) => input.push(line))",
+            "rl.on('line', (line) => {"
+            "",
+            "})",
             "  .on('close', () => {",
             "    process.exit();",
             "});"
