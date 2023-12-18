@@ -1,61 +1,42 @@
-let [k, input]= require('fs').readFileSync('/dev/stdin').toString().trim().split('\n');
-k = +k;
+let [K, input] = require('fs').readFileSync('/dev/stdin').toString().trim().split('\n');
+K = +K;
+input = input.split(' ');
 
-input= input.split(' ');
+let resultCount = 0;
+let min = '';
+let max = '';
+get();
+console.log(max);
+console.log(min);
 
-let last = input[0];
-let a = 9;
-let stack = [];
-let queue = [];
-
-let A= '';
-for (let i = 1; i <= k; ++i) {
-    if (last === '<') stack.push(a--);
-    else if (last === '>') queue.push(a--);
-
-    if (i === k) {
-        if (last === '<') stack.push(a);
-        else if (last === '>') queue.push(a);
-
-        break;
+function get(count = 0, arr=new Array(), check=new Array(10).fill(false)) {
+    if (count++ > K) {
+        let result = arr.join('');
+        if (resultCount++ === 0) min = result;
+        else max = result;
+        return;
     }
+    for (let i = 0; i <= 9; ++i) {
+        let newArr = [...arr];
+        let newCheck = [...check];
+        if (check[i] === false) {
 
-    current = input[i];
+            if (arr.length > 0) {
+                let [a, b] = [arr[count-2], i];
+                let op = input[count-2];
+                switch(op) {
+                    case '>':
+                        if (a < b) continue;
+                        break;
+                    case '<':
+                        if (a > b) continue;
+                        break;
+                }
+            }
 
-    if (last !== current) {
-        if (current === '<' && stack.length > 0) {
-            queue.push(a);
-            while (stack.length > 0) {
-                A += stack.pop();
-            }
-        } else if (current === '>' && queue.length > 0) {
-            stack.push(a);
-            for (let a of queue) {
-                A += a;
-            }
-            queue = [];
+            newCheck[i] = true;
+            newArr.push(i);
+            get(count, newArr, newCheck);
         }
     }
-
-    last = current;
 }
-
-console.log(last);
-
-if (last === '<') {
-    for (let a of queue) {
-        A += a;
-    }
-    queue = [];
-    while (stack.length > 0) {
-        A += stack.pop();
-    }
-
-
-} else if (last === '>') {
-
-}
-
-console.log(stack);
-console.log(queue);
-console.log(A);
